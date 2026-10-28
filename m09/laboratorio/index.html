@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Laboratório · Curso de Redes</title><meta name="description" content="Roteiros passo a passo com checklist de progresso. Os laboratórios com configuração têm um verificador de comandos: cole o que você digitou e veja o q">
+<link rel="stylesheet" href="../../assets/style.css"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23c96442'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23faf9f5'/%3E%3C/svg%3E"></head>
+<body><main class="wrap"><div class="crumb"><a href="../../">Curso de Redes</a> · <a href="../../#m9">Módulo 09</a></div>
+<header class="top"><p class="eyebrow">Módulo 09 · DHCP, DNS e NAT</p><h1>Laboratório</h1><p class="lead">Roteiros passo a passo com checklist de progresso. Os laboratórios com configuração têm um <b>verificador de comandos</b>: cole o que você digitou e veja o que falta.</p></header>
+<div id="app"><div class="card soft"><p>Os três primeiros roteiros rodam no seu próprio computador e os três últimos no Packet Tracer. Em cada passo, escreva o que espera ver antes de olhar o resultado.</p><p class="hint" style="margin:8px 0 0">Marque cada passo ao concluir. O progresso fica salvo neste navegador.</p></div><section class="card lab" data-lab="9.1" id="lab-9-1"><div class="row"><span class="pill acc">Lab 9.1</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">sua concessão DHCP</h3><div class="labprog" style="margin-bottom:6px"></div><p>Objetivo: ler o que o DHCP entregou ao seu computador.</p>
+<div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">No Windows, rode <code>ipconfig /all</code>. No Linux, rode <code>ip -br addr</code>, <code>ip route</code> e <code>resolvectl status</code>.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">Anote: endereço IP, máscara, gateway, servidor DNS e, no Windows, o servidor DHCP e as datas de início e fim da concessão. Em qual faixa privada está o seu endereço?</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">Calcule T1 (50%) e T2 (87,5%) a partir da duração da concessão.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 4"><div class="st">Rode <code>curl ifconfig.me</code> e compare o endereço que ele devolve com o seu IP privado. Essa diferença é o NAT do seu roteador em ação.</div></div>
+<details><summary>Resultado esperado</summary><p>um endereço privado de rede local e um endereço público completamente diferente, o que prova que há NAT entre você e a Internet.</p></details>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div></section><section class="card lab" data-lab="9.2" id="lab-9-2"><div class="row"><span class="pill acc">Lab 9.2</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">capturando o DORA</h3><div class="labprog" style="margin-bottom:6px"></div><p>Objetivo: ver as quatro mensagens no Wireshark.</p>
+<div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">Abra o Wireshark na interface de rede ativa e use o filtro <code>udp.port == 67 || udp.port == 68</code>.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">No Windows, rode <code>ipconfig /release</code> e depois <code>ipconfig /renew</code> (no Linux, <code>sudo dhclient -r</code> e <code>sudo dhclient</code>, se o seu sistema usar o dhclient). Atenção: você perde a conexão por alguns segundos.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">Encontre as mensagens Discover, Offer, Request e Ack. Em cada uma, anote origem, destino e as opções (gateway, DNS, tempo de concessão).</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 4"><div class="st">Identifique em qual mensagem o servidor informa o tempo de concessão.</div></div>
+<details><summary>Resultado esperado</summary><p>quatro pacotes, os dois primeiros e o Request em broadcast, e o Ack trazendo o endereço confirmado. Em algumas redes o Offer e o Ack também chegam em broadcast, e isso é normal.</p></details>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div></section><section class="card lab" data-lab="9.3" id="lab-9-3"><div class="row"><span class="pill acc">Lab 9.3</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">DNS com nslookup e dig</h3><div class="labprog" style="margin-bottom:6px"></div><p>Objetivo: enxergar a resolução e comparar resolvedores.</p>
+<div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">Rode <code>nslookup wikipedia.org</code> e depois <code>nslookup wikipedia.org 8.8.8.8</code>. Compare os resultados.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">Peça outros tipos: <code>nslookup -type=MX wikipedia.org</code>, <code>nslookup -type=NS wikipedia.org</code> e <code>nslookup -type=AAAA wikipedia.org</code>.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">No Linux ou macOS, rode <code>dig +trace wikipedia.org</code> e acompanhe a descida da raiz, TLD e servidores autoritativos, como na figura da Teoria.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 4"><div class="st">Rode <code>dig wikipedia.org</code> duas vezes seguidas e observe o TTL diminuir na segunda (o cache do resolvedor).</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 5"><div class="st">Teste a consulta reversa com <code>dig -x 8.8.8.8</code>.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 6"><div class="st">Capture com o Wireshark com o filtro <code>dns</code> enquanto repete o passo 1 e observe o tamanho da consulta.</div></div>
+<details><summary>Resultado esperado</summary><p>o mesmo nome pode ter respostas diferentes dependendo do resolvedor (em domínios com balanceamento), o TTL diminui entre as consultas seguidas e o <code>+trace</code> mostra os servidores NS de cada nível.</p></details>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div></section><section class="card lab" data-lab="9.4" id="lab-9-4"><div class="row"><span class="pill acc">Lab 9.4</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">Packet Tracer, DHCP e DNS</h3><div class="labprog" style="margin-bottom:6px"></div><p>Objetivo: configurar DHCP em um roteador e DNS em um servidor.</p>
+<div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">Monte: um roteador 2911 (ou 4331), um switch, três PCs e um servidor, todos na rede 192.168.10.0/24. O roteador usa 192.168.10.1 na interface g0/0.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">No roteador, configure o DHCP:</div></div>
+<pre><code>ip dhcp excluded-address 192.168.10.1 192.168.10.10
+ip dhcp pool LAN10
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ dns-server 192.168.10.5</code></pre>
+<div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">No servidor, dê o IP fixo 192.168.10.5, abra Services, DNS, ligue o serviço e adicione um registro A: nome <code>www.lab.local</code>, endereço 192.168.10.5. Em Services, HTTP, deixe o serviço ligado.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">Nos PCs, mude o IP Configuration para DHCP. Confirme que receberam um endereço do pool e o DNS.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">No PC, abra o Web Browser e acesse <code>http://www.lab.local</code>. Use <code>nslookup www.lab.local</code> no Command Prompt.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 4"><div class="st">No roteador, confira com <code>show ip dhcp binding</code> e <code>show ip dhcp pool</code>.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 5"><div class="st">Passe para o modo Simulation, libere o filtro DHCP e peça um novo endereço em um PC para acompanhar o DORA.</div></div>
+<details><summary>Resultado esperado</summary><p>os PCs recebem endereços a partir de 192.168.10.11, resolvem <code>www.lab.local</code> e abrem a página.</p></details>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div><div class="validator" data-v="9.4"></div></section><section class="card lab" data-lab="9.5" id="lab-9-5"><div class="row"><span class="pill acc">Lab 9.5</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">Packet Tracer, DHCP relay</h3><div class="labprog" style="margin-bottom:6px"></div><p>Objetivo: entregar endereços para uma rede que não tem servidor DHCP.</p>
+<div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">Parta do Lab 9.4. Acrescente uma segunda rede, 192.168.20.0/24, na interface g0/1 do roteador (192.168.20.1), com um switch e um PC.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">No servidor (192.168.10.5), abra Services, DHCP e crie um pool chamado Rede20 com gateway 192.168.20.1, servidor DNS 192.168.10.5, endereço inicial 192.168.20.10 e máscara 255.255.255.0. Clique em Add (ou Save) e ligue o serviço.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">Na interface g0/1 do roteador, configure <code>ip helper-address 192.168.10.5</code>.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 4"><div class="st">No PC da rede 20, configure DHCP e confira o endereço recebido e o gateway.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 5"><div class="st">Remova o relay com <code>no ip helper-address 192.168.10.5</code> e peça um novo endereço de novo. Compare.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 6"><div class="st">No modo Simulation, filtre por DHCP e acompanhe o Discover sendo reenviado pelo roteador como unicast para o servidor.</div></div>
+<details><summary>Resultado esperado</summary><p>com o relay o PC recebe um endereço da rede 20, e sem ele fica com 169.254.x.x.</p></details>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div><div class="validator" data-v="9.5"></div></section><section class="card lab" data-lab="9.6" id="lab-9-6"><div class="row"><span class="pill acc">Lab 9.6</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">Packet Tracer, NAT e PAT</h3><div class="labprog" style="margin-bottom:6px"></div><p>Objetivo: traduzir endereços privados em um roteador de borda.</p>
+<div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">Monte: dois PCs e um switch na rede 192.168.10.0/24, o roteador R1 com g0/0 em 192.168.10.1/24 e g0/1 em 203.0.113.2/29, e um segundo roteador R2 representando a Internet, com g0/0 em 203.0.113.1/29 e g0/1 em 198.51.100.1/24, ligado a um servidor 198.51.100.10/24 com gateway 198.51.100.1.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">No R1, configure uma rota padrão: <code>ip route 0.0.0.0 0.0.0.0 203.0.113.1</code>. O R2 já conhece as duas redes às quais está conectado e não precisa de mais rotas.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">No R1, configure:</div></div>
+<pre><code>interface g0/0
+ ip nat inside
+interface g0/1
+ ip nat outside
+access-list 1 permit 192.168.10.0 0.0.0.255
+ip nat inside source list 1 interface g0/1 overload</code></pre>
+<div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">Dos PCs, dê ping no servidor 198.51.100.10 e abra o navegador no endereço dele (com o serviço HTTP ligado no servidor).</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">No R1, rode <code>show ip nat translations</code> e <code>show ip nat statistics</code>. Observe os endereços e as portas.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">Acrescente um NAT estático para o PC 192.168.10.10 com <code>ip nat inside source static 192.168.10.10 203.0.113.3</code>. Do servidor, teste <code>ping 203.0.113.3</code>.</div></div>
+<details><summary>Resultado esperado</summary><p>os dois PCs saem como 203.0.113.2, e a tabela mostra uma entrada por conversa. Pelo NAT estático, o servidor alcança o PC interno pelo endereço público 203.0.113.3.</p></details>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div><div class="validator" data-v="9.6"></div></section></div>
+<footer class="foot"><span>Curso de Redes de Computadores</span><span>·</span><a href="../../">Todas as atividades</a><span>·</span><span>Seu progresso fica salvo só neste navegador.</span></footer>
+</main><script>window.ACT={"kind": "lab", "id": "m09-lab"};</script><script src="../../assets/app.js"></script><script src="../../assets/lib.js"></script><script src="../../assets/validators-engine.js"></script><script src="../../assets/js-yaml.min.js"></script><script src="../../assets/validators.js"></script></body></html>

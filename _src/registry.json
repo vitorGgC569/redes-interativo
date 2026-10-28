@@ -1,0 +1,569 @@
+[
+ {
+  "m": 1,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "25 cartões em 6 níveis",
+  "url": "m01/exercicios/"
+ },
+ {
+  "m": 1,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · múltipla escolha",
+  "url": "m01/simulado/"
+ },
+ {
+  "m": 1,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "3 roteiros",
+  "url": "m01/laboratorio/"
+ },
+ {
+  "m": 2,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "28 cartões em 7 níveis",
+  "url": "m02/exercicios/"
+ },
+ {
+  "m": 2,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · múltipla escolha",
+  "url": "m02/simulado/"
+ },
+ {
+  "m": 2,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "4 roteiros",
+  "url": "m02/laboratorio/"
+ },
+ {
+  "m": 3,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "20 cartões em 7 níveis",
+  "url": "m03/exercicios/"
+ },
+ {
+  "m": 3,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · discursivas com autoavaliação",
+  "url": "m03/simulado/"
+ },
+ {
+  "m": 3,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "4 roteiros",
+  "url": "m03/laboratorio/"
+ },
+ {
+  "m": 4,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "21 cartões em 7 níveis",
+  "url": "m04/exercicios/"
+ },
+ {
+  "m": 4,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · discursivas com autoavaliação",
+  "url": "m04/simulado/"
+ },
+ {
+  "m": 4,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "4 roteiros",
+  "url": "m04/laboratorio/"
+ },
+ {
+  "m": 5,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "21 cartões em 7 níveis",
+  "url": "m05/exercicios/"
+ },
+ {
+  "m": 5,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · discursivas com autoavaliação",
+  "url": "m05/simulado/"
+ },
+ {
+  "m": 5,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "4 roteiros",
+  "url": "m05/laboratorio/"
+ },
+ {
+  "m": 6,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "21 cartões em 6 níveis",
+  "url": "m06/exercicios/"
+ },
+ {
+  "m": 6,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · discursivas com autoavaliação",
+  "url": "m06/simulado/"
+ },
+ {
+  "m": 6,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "4 roteiros · verificador de comandos em 1",
+  "url": "m06/laboratorio/"
+ },
+ {
+  "m": 7,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "18 cartões em 7 níveis",
+  "url": "m07/exercicios/"
+ },
+ {
+  "m": 7,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · discursivas com autoavaliação",
+  "url": "m07/simulado/"
+ },
+ {
+  "m": 7,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "5 roteiros · verificador de comandos em 2",
+  "url": "m07/laboratorio/"
+ },
+ {
+  "m": 8,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "35 cartões em 5 níveis",
+  "url": "m08/exercicios/"
+ },
+ {
+  "m": 8,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · múltipla escolha",
+  "url": "m08/simulado/"
+ },
+ {
+  "m": 8,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "6 roteiros",
+  "url": "m08/laboratorio/"
+ },
+ {
+  "m": 9,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "35 cartões em 5 níveis",
+  "url": "m09/exercicios/"
+ },
+ {
+  "m": 9,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · múltipla escolha",
+  "url": "m09/simulado/"
+ },
+ {
+  "m": 9,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "6 roteiros · verificador de comandos em 3",
+  "url": "m09/laboratorio/"
+ },
+ {
+  "m": 10,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "34 cartões em 5 níveis",
+  "url": "m10/exercicios/"
+ },
+ {
+  "m": 10,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · múltipla escolha",
+  "url": "m10/simulado/"
+ },
+ {
+  "m": 10,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "6 roteiros · verificador de comandos em 4",
+  "url": "m10/laboratorio/"
+ },
+ {
+  "m": 11,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "36 cartões em 5 níveis",
+  "url": "m11/exercicios/"
+ },
+ {
+  "m": 11,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · múltipla escolha",
+  "url": "m11/simulado/"
+ },
+ {
+  "m": 11,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "7 roteiros · verificador de comandos em 5",
+  "url": "m11/laboratorio/"
+ },
+ {
+  "m": 12,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "37 cartões em 5 níveis",
+  "url": "m12/exercicios/"
+ },
+ {
+  "m": 12,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · múltipla escolha",
+  "url": "m12/simulado/"
+ },
+ {
+  "m": 12,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "5 roteiros",
+  "url": "m12/laboratorio/"
+ },
+ {
+  "m": 13,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "37 cartões em 5 níveis",
+  "url": "m13/exercicios/"
+ },
+ {
+  "m": 13,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · múltipla escolha",
+  "url": "m13/simulado/"
+ },
+ {
+  "m": 13,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "7 roteiros · verificador de comandos em 5",
+  "url": "m13/laboratorio/"
+ },
+ {
+  "m": 14,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "36 cartões em 5 níveis",
+  "url": "m14/exercicios/"
+ },
+ {
+  "m": 14,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · múltipla escolha",
+  "url": "m14/simulado/"
+ },
+ {
+  "m": 14,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "6 roteiros · verificador de comandos em 3",
+  "url": "m14/laboratorio/"
+ },
+ {
+  "m": 15,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "14 cartões em 5 níveis",
+  "url": "m15/exercicios/"
+ },
+ {
+  "m": 15,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · múltipla escolha",
+  "url": "m15/simulado/"
+ },
+ {
+  "m": 15,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "7 roteiros",
+  "url": "m15/laboratorio/"
+ },
+ {
+  "m": 16,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "40 cartões em 5 níveis",
+  "url": "m16/exercicios/"
+ },
+ {
+  "m": 16,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · múltipla escolha",
+  "url": "m16/simulado/"
+ },
+ {
+  "m": 16,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "6 roteiros · verificador de comandos em 1",
+  "url": "m16/laboratorio/"
+ },
+ {
+  "m": 17,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "12 cartões em 5 níveis",
+  "url": "m17/exercicios/"
+ },
+ {
+  "m": 17,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · múltipla escolha",
+  "url": "m17/simulado/"
+ },
+ {
+  "m": 17,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "6 roteiros · verificador de comandos em 2",
+  "url": "m17/laboratorio/"
+ },
+ {
+  "m": 18,
+  "slug": "exercicios",
+  "title": "Exercícios com gabarito comentado",
+  "kind": "cards",
+  "desc": "22 cartões em 6 níveis",
+  "url": "m18/exercicios/"
+ },
+ {
+  "m": 18,
+  "slug": "simulado",
+  "title": "Simulado cronometrado",
+  "kind": "exam",
+  "desc": "15 questões · múltipla escolha",
+  "url": "m18/simulado/"
+ },
+ {
+  "m": 18,
+  "slug": "laboratorio",
+  "title": "Laboratório guiado",
+  "kind": "lab",
+  "desc": "6 roteiros · verificador de comandos em 3",
+  "url": "m18/laboratorio/"
+ },
+ {
+  "m": 1,
+  "slug": "conversor",
+  "title": "Conversor binário, decimal e hexadecimal",
+  "kind": "sim",
+  "desc": "Bits clicáveis, conversor e IPv4 em binário",
+  "url": "m01/conversor/",
+  "order": 0
+ },
+ {
+  "m": 1,
+  "slug": "quiz-conversao",
+  "title": "Quiz de conversões",
+  "kind": "quiz",
+  "desc": "10 questões sorteadas a cada rodada",
+  "url": "m01/quiz-conversao/",
+  "order": 1
+ },
+ {
+  "m": 3,
+  "slug": "quiz-modelos",
+  "title": "Quiz de camadas e PDUs",
+  "kind": "quiz",
+  "desc": "10 questões sorteadas, com ordenação das camadas",
+  "url": "m03/quiz-modelos/",
+  "order": 1
+ },
+ {
+  "m": 5,
+  "slug": "calculadora",
+  "title": "Calculadora de sub-redes",
+  "kind": "sim",
+  "desc": "Rede, broadcast, faixa de hosts e bits do endereço",
+  "url": "m05/calculadora/",
+  "order": 0
+ },
+ {
+  "m": 5,
+  "slug": "quiz-ipv4",
+  "title": "Quiz de endereçamento IPv4",
+  "kind": "quiz",
+  "desc": "10 questões sorteadas",
+  "url": "m05/quiz-ipv4/",
+  "order": 1
+ },
+ {
+  "m": 6,
+  "slug": "calculadora",
+  "title": "Calculadora de sub-redes",
+  "kind": "sim",
+  "desc": "Rede, broadcast, faixa de hosts e divisão em sub-redes",
+  "url": "m06/calculadora/",
+  "order": 0
+ },
+ {
+  "m": 6,
+  "slug": "quiz-subnetting",
+  "title": "Quiz de subnetting",
+  "kind": "quiz",
+  "desc": "8 questões sorteadas com correção automática",
+  "url": "m06/quiz-subnetting/",
+  "order": 1
+ },
+ {
+  "m": 6,
+  "slug": "quiz-vlsm",
+  "title": "Quiz de VLSM e sumarização",
+  "kind": "quiz",
+  "desc": "6 questões sorteadas",
+  "url": "m06/quiz-vlsm/",
+  "order": 1
+ },
+ {
+  "m": 6,
+  "slug": "planejador-vlsm",
+  "title": "Planejador de VLSM",
+  "kind": "sim",
+  "desc": "Informe o bloco e as demandas e veja a alocação",
+  "url": "m06/planejador-vlsm/",
+  "order": 0
+ },
+ {
+  "m": 7,
+  "slug": "ferramenta-ipv6",
+  "title": "Ferramenta IPv6",
+  "kind": "sim",
+  "desc": "Abreviar, expandir, classificar e gerar EUI-64",
+  "url": "m07/ferramenta-ipv6/",
+  "order": 0
+ },
+ {
+  "m": 7,
+  "slug": "quiz-ipv6",
+  "title": "Quiz de IPv6",
+  "kind": "quiz",
+  "desc": "10 questões sorteadas",
+  "url": "m07/quiz-ipv6/",
+  "order": 1
+ },
+ {
+  "m": 8,
+  "slug": "quiz-portas",
+  "title": "Quiz de portas e transporte",
+  "kind": "quiz",
+  "desc": "10 questões sorteadas",
+  "url": "m08/quiz-portas/",
+  "order": 1
+ },
+ {
+  "m": 9,
+  "slug": "quiz-dora",
+  "title": "Quiz: DORA e handshake",
+  "kind": "quiz",
+  "desc": "Ordene as mensagens dos protocolos",
+  "url": "m09/quiz-dora/",
+  "order": 1
+ },
+ {
+  "m": 11,
+  "slug": "quiz-ospf",
+  "title": "Quiz de custo OSPF",
+  "kind": "quiz",
+  "desc": "8 questões sorteadas",
+  "url": "m11/quiz-ospf/",
+  "order": 1
+ },
+ {
+  "m": 13,
+  "slug": "quiz-wildcard",
+  "title": "Quiz de wildcard",
+  "kind": "quiz",
+  "desc": "8 questões sorteadas",
+  "url": "m13/quiz-wildcard/",
+  "order": 1
+ }
+]

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Laboratório · Curso de Redes</title><meta name="description" content="Roteiros passo a passo com checklist de progresso.">
+<link rel="stylesheet" href="../../assets/style.css"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23c96442'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23faf9f5'/%3E%3C/svg%3E"></head>
+<body><main class="wrap"><div class="crumb"><a href="../../">Curso de Redes</a> · <a href="../../#m2">Módulo 02</a></div>
+<header class="top"><p class="eyebrow">Módulo 02 · Meios físicos</p><h1>Laboratório</h1><p class="lead">Roteiros passo a passo com checklist de progresso.</p></header>
+<div id="app"><section class="card lab" data-lab="2.1" id="lab-2-1"><div class="row"><span class="pill acc">Lab 2.1</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">Descubra a velocidade e o duplex do seu cabo (10 min)</h3><div class="labprog" style="margin-bottom:6px"></div><div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st"><b>Windows (PowerShell):</b> <code>Get-NetAdapter | Select-Object Name, Status, LinkSpeed</code>. Anote a velocidade de cada adaptador (por exemplo 1 Gbps).</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st"><b>Linux:</b> <code>ip link</code> para ver o nome da interface (por exemplo <code>enp3s0</code>) e <code>sudo ethtool enp3s0</code> (instale com <code>sudo apt install ethtool</code>); procure <b>Speed</b>, <b>Duplex</b> e <b>Link detected</b>.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">Responda: o link está na velocidade máxima que a sua placa e o seu switch/roteador suportam? Se negociou 100 Mbps em vez de 1 Gbps, suspeite de cabo (Cat5 ou com fios danificados), conector mal crimpado ou porta limitada.</div></div>
+<details><summary>Resultado esperado</summary>
+<p>Algo como <b>Speed: 1000Mb/s, Duplex: Full, Link detected: yes</b>. Se vir 100Mb/s, troque o cabo por um Cat5e/Cat6 de boa qualidade e teste de novo. Em 1000BASE-T os 4 pares são usados; se apenas 2 pares estiverem bons, o link cai para 100 Mbps.</p>
+</details>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div></section><section class="card lab" data-lab="2.2" id="lab-2-2"><div class="row"><span class="pill acc">Lab 2.2</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">Sua rede Wi-Fi está num canal bom? (15 min)</h3><div class="labprog" style="margin-bottom:6px"></div><div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">Execute <code>netsh wlan show interfaces</code> (Windows) ou <code>nmcli -f SSID,CHAN,RATE,SIGNAL,SECURITY dev wifi</code> (Linux).</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">Anote: banda (2,4 ou 5 GHz, deduzida do canal: canais 1-13 = 2,4 GHz; 36 em diante = 5 GHz), padrão (Radio type) e sinal.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">Liste as redes vizinhas com <code>netsh wlan show networks mode=bssid</code> (Windows) e conte quantas usam o mesmo canal que o seu.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 4"><div class="st">Proponha uma troca de canal (1, 6 ou 11 em 2,4 GHz) e justifique com sua contagem.</div></div>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div></section><section class="card lab" data-lab="2.3" id="lab-2-3"><div class="row"><span class="pill acc">Lab 2.3</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">Cabos e dispositivos no Packet Tracer (25 min)</h3><div class="labprog" style="margin-bottom:6px"></div><div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">Instale e abra o Packet Tracer (veja a seção 8).</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">Monte: 2 PCs, 1 switch 2960, 1 roteador 2911 (ou 1941) e 1 laptop.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">Ligue <b>PC0→switch</b> e <b>PC1→switch</b> com <b>Copper Straight-Through</b>. Ligue <b>switch→roteador</b> com Straight-Through.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 4"><div class="st">Observe as luzes dos links (verde = ativo; o link do roteador só fica verde depois de <code>no shutdown</code> na interface, pois interfaces de roteador começam desligadas).</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 5"><div class="st">Ligue <b>PC0 diretamente ao roteador</b> com <b>Copper Cross-Over</b> em outra porta. Tente com Straight-Through e compare o comportamento (observe e anote; o Packet Tracer pode ser mais permissivo que o hardware real).</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 6"><div class="st">Entre na CLI do roteador e ative a interface:</div></div>
+<pre><code>Router&gt; enable
+Router# configure terminal
+Router(config)# interface gigabitEthernet 0/0
+Router(config-if)# no shutdown
+Router(config-if)# end
+Router# show ip interface brief</code></pre>
+<details><summary>Conferência</summary>
+<p>Em <b>show ip interface brief</b>, a coluna Status e Protocol deve mostrar <b>up/up</b> na interface ligada a um dispositivo ativo. Se mostrar <b>administratively down</b>, você esqueceu o <b>no shutdown</b>. Se mostrar <b>down/down</b>, o cabo não está conectado ou é do tipo errado para o equipamento.</p>
+</details>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div></section><section class="card lab" data-lab="2.4" id="lab-2-4"><div class="row"><span class="pill acc">Lab 2.4</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">(opcional): Meça a vazão real com iperf3 (15 min)</h3><div class="labprog" style="margin-bottom:6px"></div><div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">Em dois computadores da mesma rede, instale o iperf3.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">No computador A: <code>iperf3 -s</code>. No B: <code>iperf3 -c IP_DO_A</code>.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">Compare com a velocidade negociada do Lab 2.1. Repita pelo Wi-Fi e depois pelo cabo e compare os resultados.</div></div>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div></section></div>
+<footer class="foot"><span>Curso de Redes de Computadores</span><span>·</span><a href="../../">Todas as atividades</a><span>·</span><span>Seu progresso fica salvo só neste navegador.</span></footer>
+</main><script>window.ACT={"kind": "lab", "id": "m02-lab"};</script><script src="../../assets/app.js"></script></body></html>

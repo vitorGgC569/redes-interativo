@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Laboratório · Curso de Redes</title><meta name="description" content="Roteiros passo a passo com checklist de progresso. Os laboratórios com configuração têm um verificador de comandos: cole o que você digitou e veja o q">
+<link rel="stylesheet" href="../../assets/style.css"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23c96442'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23faf9f5'/%3E%3C/svg%3E"></head>
+<body><main class="wrap"><div class="crumb"><a href="../../">Curso de Redes</a> · <a href="../../#m6">Módulo 06</a></div>
+<header class="top"><p class="eyebrow">Módulo 06 · Sub-redes e VLSM</p><h1>Laboratório</h1><p class="lead">Roteiros passo a passo com checklist de progresso. Os laboratórios com configuração têm um <b>verificador de comandos</b>: cole o que você digitou e veja o que falta.</p></header>
+<div id="app"><section class="card lab" data-lab="6.1" id="lab-6-1"><div class="row"><span class="pill acc">Lab 6.1</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">plano de endereçamento no papel e no Python</h3><div class="labprog" style="margin-bottom:6px"></div><div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">Resolva à mão o Exercício 4.2 (10.10.0.0/22). Monte a tabela: sub-rede, prefixo, rede, faixa, broadcast.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">Edite o script da seção 8 trocando o bloco e os pedidos pelos do 4.2 e execute.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">Compare linha a linha. Se divergir, descubra quem errou (você ou o script) refazendo a conta em binário.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 4"><div class="st">Altere o pedido da Vendas para 600 hosts. O que acontece? (O script deve acusar "Sem espaço" ou alocar de forma diferente; explique por quê.)</div></div>
+<details><summary>Resultado esperado</summary><p>tabela idêntica à do gabarito. Com 600 hosts, Vendas passa a exigir um /22 (1022 hosts) e o bloco 10.10.0.0/22 inteiro é consumido, de modo que os demais pedidos deixam de caber (o script lança "Sem espaço").</p></details>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div></section><section class="card lab" data-lab="6.2" id="lab-6-2"><div class="row"><span class="pill acc">Lab 6.2</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">duas sub-redes de tamanhos diferentes em um roteador (Packet Tracer)</h3><div class="labprog" style="margin-bottom:6px"></div><p>Topologia: PC-A, Switch0, R1 (Gi0/0) e PC-B, Switch1, R1 (Gi0/1). Roteador 2911 (ou equivalente com portas GigabitEthernet).</p>
+<table><thead><tr><th>Dispositivo</th><th>Interface</th><th>Endereço</th><th>Gateway</th></tr></thead><tbody><tr><td>R1</td><td>Gi0/0</td><td>192.168.10.1/25</td><td></td></tr><tr><td>R1</td><td>Gi0/1</td><td>192.168.10.129/26</td><td></td></tr><tr><td>PC-A</td><td>NIC</td><td>192.168.10.10/25 (255.255.255.128)</td><td>192.168.10.1</td></tr><tr><td>PC-B</td><td>NIC</td><td>192.168.10.130/26 (255.255.255.192)</td><td>192.168.10.129</td></tr></tbody></table>
+<pre><code>R1(config)# interface gigabitEthernet 0/0
+R1(config-if)# ip address 192.168.10.1 255.255.255.128
+R1(config-if)# no shutdown
+R1(config-if)# interface gigabitEthernet 0/1
+R1(config-if)# ip address 192.168.10.129 255.255.255.192
+R1(config-if)# no shutdown
+R1(config-if)# end
+R1# show ip interface brief
+R1# show ip route</code></pre>
+<div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">Teste <code>ping</code> de PC-A para PC-B. O roteamento entre as duas redes diretamente conectadas funciona sem rotas estáticas.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">No <code>show ip route</code>, identifique as duas rotas <code>C</code> (connected) e as rotas <code>L</code> (local).</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st"><b>Quebre:</b> configure PC-B com máscara 255.255.255.0 e veja que muda (o PC-B passa a achar que 192.168.10.10 está na mesma rede e tenta o ARP direto, que não alcança PC-A). Corrija.</div></div>
+<details><summary>Resultado esperado</summary><p>ping funciona nas duas direções; <code>show ip route</code> lista <code>C 192.168.10.0/25</code> e <code>C 192.168.10.128/26</code> (além das rotas <code>L</code> dos endereços das interfaces). Com a máscara errada no PC-B, o ping falha ou o comportamento fica inconsistente.</p></details>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div><div class="validator" data-v="6.2"></div></section><section class="card lab" data-lab="6.3" id="lab-6-3"><div class="row"><span class="pill acc">Lab 6.3</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">sumarização com Python</h3><div class="labprog" style="margin-bottom:6px"></div><p>Rode:</p>
+<pre><code>import ipaddress as ip
+redes = [ip.ip_network(f"10.1.{i}.0/24") for i in range(4, 8)]
+print(list(ip.collapse_addresses(redes)))   # [IPv4Network('10.1.4.0/22')]
+redes2 = [ip.ip_network("192.168.1.0/24"), ip.ip_network("192.168.2.0/24")]
+print(list(ip.collapse_addresses(redes2)))  # continuam duas redes: não há sumarização exata</code></pre>
+<p>Explique por que o segundo caso não se resume em uma única rota.</p>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div></section><section class="card lab" data-lab="6.4" id="lab-6-4"><div class="row"><span class="pill acc">Lab 6.4</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">caça aos erros</h3><div class="labprog" style="margin-bottom:6px"></div><p>Encontre o erro em cada configuração: (a) PC 172.16.5.64/26 com gateway 172.16.5.1; (b) link R1-R2 em 10.0.0.0/30 com R1 = 10.0.0.1 e R2 = 10.0.0.4; (c) duas VLANs com 192.168.20.0/24 e 192.168.20.64/26; (d) interface com 192.168.4.255/24.</p>
+<details><summary>Resposta</summary>
+<p>(a) 172.16.5.64/26 é o endereço de <b>rede</b> do bloco 64 a 127, não pode ser host, e o gateway .1 está em outro bloco (0 a 63). (b) 10.0.0.4 está <b>fora</b> do 10.0.0.0/30 (0 a 3); deveria ser 10.0.0.2. (c) 192.168.20.64/26 está <b>dentro</b> do 192.168.20.0/24: sobreposição. (d) 192.168.4.255 é o <b>broadcast</b> do /24.</p>
+</details>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div></section></div>
+<footer class="foot"><span>Curso de Redes de Computadores</span><span>·</span><a href="../../">Todas as atividades</a><span>·</span><span>Seu progresso fica salvo só neste navegador.</span></footer>
+</main><script>window.ACT={"kind": "lab", "id": "m06-lab"};</script><script src="../../assets/app.js"></script><script src="../../assets/lib.js"></script><script src="../../assets/validators-engine.js"></script><script src="../../assets/js-yaml.min.js"></script><script src="../../assets/validators.js"></script></body></html>

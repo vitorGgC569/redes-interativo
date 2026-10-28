@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Laboratório · Curso de Redes</title><meta name="description" content="Roteiros passo a passo com checklist de progresso.">
+<link rel="stylesheet" href="../../assets/style.css"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23c96442'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23faf9f5'/%3E%3C/svg%3E"></head>
+<body><main class="wrap"><div class="crumb"><a href="../../">Curso de Redes</a> · <a href="../../#m1">Módulo 01</a></div>
+<header class="top"><p class="eyebrow">Módulo 01 · Fundamentos</p><h1>Laboratório</h1><p class="lead">Roteiros passo a passo com checklist de progresso.</p></header>
+<div id="app"><section class="card lab" data-lab="1.1" id="lab-1-1"><div class="row"><span class="pill acc">Lab 1.1</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">Converta no seu computador (10 min)</h3><div class="labprog" style="margin-bottom:6px"></div><p>Objetivo: conferir seus cálculos com ferramentas.</p>
+<div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">Abra a <b>Calculadora</b> do sistema em modo <b>Programador</b> (Windows: Calculadora &gt; Programador; macOS: Calculadora &gt; Visualizar &gt; Programador; Linux: depende da distribuição).</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">Digite 172 em DEC e observe BIN e HEX.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">Alternativa em Python (qualquer sistema com Python 3):</div></div>
+<pre><code>for n in (192, 168, 10, 200):
+    print(n, format(n, "08b"), format(n, "02X"))
+
+print(int("10101100", 2))   # binário para decimal -&gt; 172
+print(int("AC", 16))       # hex para decimal -&gt; 172</code></pre>
+<details><summary>Resultado esperado</summary><p>192 11000000 C0, 168 10101000 A8, 10 00001010 0A, 200 11001000 C8, depois 172 e 172.</p></details>
+<div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">Alternativa em PowerShell (Windows): <code>[Convert]::ToString(172,2)</code> retorna 10101100; <code>[Convert]::ToInt32("10101100",2)</code> retorna 172.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">Alternativa em Bash (Linux/macOS): <code>echo $((2#10101100))</code> imprime 172 e <code>printf '%X\n' 172</code> imprime AC.</div></div>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div></section><section class="card lab" data-lab="1.2" id="lab-1-2"><div class="row"><span class="pill acc">Lab 1.2</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">Descubra o IP e o MAC do seu computador (10 min)</h3><div class="labprog" style="margin-bottom:6px"></div><p>Abra o terminal e execute:</p>
+<pre><code>Windows (Prompt de Comando):   ipconfig /all
+Linux:                         ip addr   e   ip link
+macOS:                         ifconfig</code></pre>
+<p>Anote: (a) o endereço IPv4 do seu adaptador ativo; (b) o endereço MAC (no Windows aparece como "Endereço Físico"). Depois:</p>
+<div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">Converta cada octeto do IPv4 para binário, no papel, e confira com o Lab 1.1.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">Conte quantos dígitos hexadecimais tem o MAC e quantos bits isso dá (esperado: 12 dígitos = 48 bits).</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">Teste a pilha de rede local: <code>ping 127.0.0.1</code> (loopback; não sai do computador). Você deverá receber respostas.</div></div>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div></section><section class="card lab" data-lab="1.3" id="lab-1-3"><div class="row"><span class="pill acc">Lab 1.3</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">Dois PCs e um switch no Cisco Packet Tracer (20 min)</h3><div class="labprog" style="margin-bottom:6px"></div><p>Objetivo: ver bits virando comunicação. (Instalação do Packet Tracer: página-mãe, seção 4.)</p>
+<p>![Diagrama 1 do Módulo 1](file-upload://406731c0-f1e4-81af-8429-00b29e9a3e81)</p>
+<div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">Arraste 2 PCs e 1 switch (ex.: 2960) para a área de trabalho.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">Ligue cada PC ao switch com o cabo <b>Copper Straight-Through</b> (PC FastEthernet0 → porta FastEthernet0/1 e 0/2).</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">Em cada PC: Desktop &gt; IP Configuration: PC0 = 192.168.1.10, máscara 255.255.255.0; PC1 = 192.168.1.11, máscara 255.255.255.0.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 4"><div class="st">No PC0: Desktop &gt; Command Prompt &gt; <code>ping 192.168.1.11</code>.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 5"><div class="st">Dica: o primeiro ping pode falhar por tempo esgotado porque o ARP ainda está resolvendo o MAC; os seguintes devem responder.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 6"><div class="st">Pergunta: qual é o endereço de rede de 192.168.1.10/24? E converta 255.255.255.0 para binário.</div></div>
+<details><summary>Gabarito Lab 1.3</summary>
+<ul><li>Endereço de rede: 192.168.1.0 (192.168.1.10 AND 255.255.255.0).</li><li>255.255.255.0 = 11111111.11111111.11111111.00000000 (24 bits 1 = prefixo /24).</li><li>Ao usar o modo Simulation do Packet Tracer, você verá primeiro um pacote ARP e depois ICMP.</li></ul>
+</details>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div></section></div>
+<footer class="foot"><span>Curso de Redes de Computadores</span><span>·</span><a href="../../">Todas as atividades</a><span>·</span><span>Seu progresso fica salvo só neste navegador.</span></footer>
+</main><script>window.ACT={"kind": "lab", "id": "m01-lab"};</script><script src="../../assets/app.js"></script></body></html>

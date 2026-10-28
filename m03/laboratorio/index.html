@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Laboratório · Curso de Redes</title><meta name="description" content="Roteiros passo a passo com checklist de progresso.">
+<link rel="stylesheet" href="../../assets/style.css"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23c96442'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23faf9f5'/%3E%3C/svg%3E"></head>
+<body><main class="wrap"><div class="crumb"><a href="../../">Curso de Redes</a> · <a href="../../#m3">Módulo 03</a></div>
+<header class="top"><p class="eyebrow">Módulo 03 · Modelos OSI e TCP/IP</p><h1>Laboratório</h1><p class="lead">Roteiros passo a passo com checklist de progresso.</p></header>
+<div id="app"><section class="card lab" data-lab="3.1" id="lab-3-1"><div class="row"><span class="pill acc">Lab 3.1</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">ver as camadas de um ping no Wireshark</h3><div class="labprog" style="margin-bottom:6px"></div><p>Objetivo: identificar Ethernet, IP e ICMP em um pacote real.</p>
+<div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">Abra o Wireshark e comece a capturar na interface ativa.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">Na barra de filtro, digite <code>icmp</code> e pressione Enter.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">No terminal, execute <code>ping -c 4 8.8.8.8</code> (Linux/macOS) ou <code>ping -n 4 8.8.8.8</code> (Windows).</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 4"><div class="st">Pare a captura e clique no primeiro pacote "Echo (ping) request".</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 5"><div class="st">No painel central, expanda, nesta ordem: <b>Frame</b> (camada 1: bytes capturados), <b>Ethernet II</b> (camada 2), <b>Internet Protocol Version 4</b> (camada 3), <b>Internet Control Message Protocol</b>.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 6"><div class="st">Preencha a tabela abaixo.</div></div>
+<table><thead><tr><th>Campo</th><th>Seu valor</th></tr></thead><tbody><tr><td>MAC origem / MAC destino (de quem é o MAC destino?)</td><td></td></tr><tr><td>IP origem / IP destino</td><td></td></tr><tr><td>TTL e Protocol (valor numérico)</td><td></td></tr><tr><td>Tipo ICMP (8 = request, 0 = reply)</td><td></td></tr></tbody></table>
+<details><summary>Resultado esperado</summary><p>o MAC destino é o do <b>seu gateway</b> (e não o do 8.8.8.8, que está fora da sua rede local); o IP destino é 8.8.8.8; o campo Protocol é 1 (ICMP).</p></details>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div></section><section class="card lab" data-lab="3.2" id="lab-3-2"><div class="row"><span class="pill acc">Lab 3.2</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">DNS e HTTP em camadas</h3><div class="labprog" style="margin-bottom:6px"></div><p>Objetivo: ver o DNS (UDP), o handshake TCP e o HTTP.</p>
+<div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">Inicie nova captura sem filtro de captura.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">No terminal: <code>nslookup example.com</code> e depois <code>curl -v http://example.com</code> (no Windows, use <code>curl.exe</code>).</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">Filtre <code>dns</code> e identifique a consulta e a resposta (camada 4 = UDP, porta 53).</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 4"><div class="st">Filtre <code>tcp.port == 80</code>. Localize os três pacotes do handshake (SYN, SYN/ACK, ACK) e depois o "GET / HTTP/1.1".</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 5"><div class="st">Clique com o botão direito no GET → <b>Follow → TCP Stream</b> para ler a conversa da camada 7.</div></div>
+<p><b>Perguntas:</b> (a) Qual a porta de destino do DNS e do HTTP? (b) Que camada e protocolo carregam o texto "GET"? (c) Quantos pacotes TCP foram trocados antes do primeiro byte de HTTP?</p>
+<p><b>Resposta esperada:</b> (a) 53/UDP e 80/TCP. (b) Camada 7 (HTTP) dentro de TCP. (c) Três (o handshake). Se algum campo diferir (por exemplo, o site redirecionar para HTTPS), anote e compare.</p>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div></section><section class="card lab" data-lab="3.3" id="lab-3-3"><div class="row"><span class="pill acc">Lab 3.3</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">Packet Tracer em modo Simulation</h3><div class="labprog" style="margin-bottom:6px"></div><p>Objetivo: ver as camadas OSI de um pacote.</p>
+<div class="step"><input type="checkbox" aria-label="Passo 1"><div class="st">No Packet Tracer, monte: <b>PC0, Switch2960, Server-PT</b> com cabos <i>Copper Straight-Through</i>.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 2"><div class="st">PC0: IP 192.168.1.10, máscara 255.255.255.0 (aba <b>Desktop → IP Configuration</b>). Server0: IP 192.168.1.100, máscara 255.255.255.0.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 3"><div class="st">Mude para <b>Simulation</b> (canto inferior direito) e, em <b>Edit Filters</b>, deixe marcados só ARP, ICMP, TCP e HTTP.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 4"><div class="st">No PC0, abra <b>Desktop → Web Browser</b> e digite <code>192.168.1.100</code>. Clique em <b>Auto Capture / Play</b> ou em <b>Capture / Forward</b>.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 5"><div class="st">Clique no envelope colorido de cada evento para abrir o <b>PDU Information</b> e use a aba <b>OSI Model</b> (camadas de entrada e saída) para ver em qual camada o dispositivo processa o pacote.</div></div>
+<div class="step"><input type="checkbox" aria-label="Passo 6"><div class="st">Observe: o switch só chega até a camada 2; o PC e o servidor processam até a camada 7.</div></div>
+<details><summary>Resultado esperado</summary><p>primeiro um ARP (o PC descobre o MAC do servidor), depois o TCP (handshake) e por fim o HTTP, com a página padrão do servidor aparecendo no navegador.</p></details>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div></section><section class="card lab" data-lab="3.4" id="lab-3-4"><div class="row"><span class="pill acc">Lab 3.4</span><div class="sp"></div><span class="hint labtxt"></span></div>
+<h3 style="margin-top:8px">no papel (15 min)</h3><div class="labprog" style="margin-bottom:6px"></div><p>Desenhe as bonecas russas do envio de "Olá" de A (10.0.1.10) para S (10.0.2.20) via um roteador. Para cada salto, escreva os campos do cabeçalho Ethernet, IP e TCP/UDP. Compare com o Exercício E.</p>
+<div class="step"><input type="checkbox" aria-label="Concluí este laboratório"><div class="st"><b>Concluí este laboratório</b> e anotei o que observei.</div></div></section></div>
+<footer class="foot"><span>Curso de Redes de Computadores</span><span>·</span><a href="../../">Todas as atividades</a><span>·</span><span>Seu progresso fica salvo só neste navegador.</span></footer>
+</main><script>window.ACT={"kind": "lab", "id": "m03-lab"};</script><script src="../../assets/app.js"></script></body></html>
